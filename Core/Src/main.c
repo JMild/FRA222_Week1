@@ -108,37 +108,28 @@ uint32_t ButtonTimeStamp5 = 0;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-// LED1
+// LED1 ==> 0.5 >> 1 >> 2 >> 3
 	    if(HAL_GetTick() - ButtonTimeStamp1 >= 100)
 		  	 {
 				 SwitchStateLED1[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
 				 if(SwitchStateLED1[1] == GPIO_PIN_SET && SwitchStateLED1[0] == GPIO_PIN_RESET) // SET = 1, RESET = 0
 				 {
 					 // Change Half Period of LED D1
-					if (LED1_HalfPeriod == 250) // f = 0.5 Hz
+					if (LED1_HalfPeriod == 250) // 0.5 Hz
 					{
-						LED1_HalfPeriod = 500;  // f = 1 Hz
+						LED1_HalfPeriod = 500; // 1 Hz
 					}
-//					else if (LED1_HalfPeriod == 500) // f = 1 Hz
-//					{
-//						LED1_HalfPeriod = 1000;  // f = 2 Hz
-//					}
-//					else if (LED1_HalfPeriod == 1000) // f = 2 Hz
-//					{
-//						LED1_HalfPeriod = 1500;  // f = 3 Hz
-//					}
-//					else if (LED1_HalfPeriod == 1500) // f = 3 Hz
-//					{
-//						LED1_HalfPeriod = 250;  // f = 0.5 Hz
-//					}
-
-					else if (LED1_HalfPeriod >= 500 && LED1_HalfPeriod < 1500) // f = 1-3 Hz
+					else if (LED1_HalfPeriod == 500) // 1 Hz
 					{
-						LED1_HalfPeriod += 500;
+						LED1_HalfPeriod = 1000; // 2 Hz
 					}
-					else if (LED1_HalfPeriod == 1500) // f = 3 Hz
+					else if (LED1_HalfPeriod == 1000) // 2 Hz
 					{
-						LED1_HalfPeriod = 250;
+						LED1_HalfPeriod = 2000; // 3 Hz
+					}
+					else if (LED1_HalfPeriod == 2000) // 3 Hz
+					{
+						LED1_HalfPeriod = 250; // 0.5 Hz
 					}
 				 }
 				 SwitchStateLED1[1] = SwitchStateLED1[0];
